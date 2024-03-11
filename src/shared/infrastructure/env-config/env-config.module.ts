@@ -1,14 +1,11 @@
 import { DynamicModule, Module } from '@nestjs/common'
-import {
-  ConfigModule,
-  ConfigModuleOptions,
-  ConfigService,
-} from '@nestjs/config'
+import { ConfigModule, ConfigModuleOptions } from '@nestjs/config'
 import { EnvConfigService } from './env-config.service'
 import { join } from 'node:path'
 
 @Module({
-  providers: [ConfigService, EnvConfigService],
+  imports: [ConfigModule],
+  providers: [EnvConfigService],
   exports: [],
 })
 export class EnvConfigModule extends ConfigModule {
