@@ -21,4 +21,9 @@ describe('UserEntity unit test', () => {
     expect(sut.name).toEqual(props.name)
     expect(sut.createAt).toBeInstanceOf(Date)
   })
+
+  it('Should return value passed by constructor and filed updateAt should return value type Date', () => {
+    expect(sut.email).toEqual(props.email)
+    expect(sut.createAt).toBeInstanceOf(Date)
+  })
 })

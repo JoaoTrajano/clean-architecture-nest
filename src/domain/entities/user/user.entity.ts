@@ -7,7 +7,7 @@ export type UserProps = {
 }
 
 export class UserEntity extends Entity<UserProps> {
-  constructor(public readonly props: UserProps) {
+  constructor(props: UserProps) {
     super(props)
   }
 
@@ -15,11 +15,23 @@ export class UserEntity extends Entity<UserProps> {
     return this.props.name
   }
 
+  set name(value: string) {
+    this.props.name = value
+  }
+
   get email(): string {
-    return this.props.name
+    return this.props.email
+  }
+
+  set email(value: string) {
+    this.props.email = value
   }
 
   get password(): string {
-    return this.props.name
+    return this.props.password
+  }
+
+  set password(value: string) {
+    this.props.password = value
   }
 }
