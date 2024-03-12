@@ -7,7 +7,7 @@ export type UserProps = {
 }
 
 export class UserEntity extends Entity<UserProps> {
-  constructor(props: UserProps) {
+  constructor(public readonly props: UserProps) {
     super(props)
   }
 
