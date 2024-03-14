@@ -7,10 +7,11 @@ import {
 export class ClassValidatorFields<PropsFields>
   implements ValidatorFieldsInterface<PropsFields>
 {
-  error: FieldsError = null
-  validatedData: PropsFields = null
+  error: FieldsError
+  validatedData: PropsFields
 
   validate(data: any): boolean {
+    if (!data) return false
     const errors = validateSync(data)
 
     if (errors.length) {
