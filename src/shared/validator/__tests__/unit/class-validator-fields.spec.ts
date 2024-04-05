@@ -1,13 +1,11 @@
-import { ClassValidatorFields } from '../../class-validator-fields'
-
 import * as libClassValidator from 'class-validator'
+import { ClassValidatorFields } from '../../class-validator-fields'
 
 class StubClassValidator extends ClassValidatorFields<{ field: string }> {}
 
 describe('StubClassValidator unit test', () => {
   it('Should sut defined', () => {
     const sut = new StubClassValidator()
-
     expect(sut).toBeDefined()
   })
 
@@ -28,7 +26,6 @@ describe('StubClassValidator unit test', () => {
     ])
 
     const sut = new StubClassValidator()
-
     expect(sut.validate({ field: 'teste' })).toBeFalsy()
     expect(spyOnValidateSync).toHaveBeenCalled()
   })
