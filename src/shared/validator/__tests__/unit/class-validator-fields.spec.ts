@@ -16,7 +16,16 @@ describe('StubClassValidator unit test', () => {
     expect(sut.validatedData).toBeNull()
   })
 
-  it('Should return errors and the method validateSync should be called', () => {
+  it('Should return whitout errors', () => {
+    const spyOnValidateSync = jest.spyOn(libClassValidator, 'validateSync')
+    spyOnValidateSync.mockReturnValue([])
+
+    const sut = new StubClassValidator()
+    expect(sut.validate({ field: 'teste' })).toBeTruthy()
+    expect(spyOnValidateSync).toHaveBeenCalled()
+  })
+
+  it(' Should return errors and the method validateSync should be called', () => {
     const spyOnValidateSync = jest.spyOn(libClassValidator, 'validateSync')
     spyOnValidateSync.mockReturnValue([
       {
@@ -26,7 +35,7 @@ describe('StubClassValidator unit test', () => {
     ])
 
     const sut = new StubClassValidator()
-    expect(sut.validate({ field: 'teste' })).toBeFalsy()
+    expect(sut.validate(null)).toBeFalsy()
     expect(spyOnValidateSync).toHaveBeenCalled()
   })
 })

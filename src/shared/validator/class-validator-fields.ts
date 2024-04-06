@@ -11,7 +11,6 @@ export abstract class ClassValidatorFields<PropsValidated>
   validatedData: PropsValidated = null
 
   validate(data: any): boolean {
-    if (!data) return false
     const errors = validateSync(data)
 
     if (errors.length) {
