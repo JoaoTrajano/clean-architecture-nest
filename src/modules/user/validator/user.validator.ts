@@ -1,9 +1,18 @@
 import { ClassValidatorFields } from '@/shared/validator/class-validator-fields'
 import { UserProps } from '../domain/entities'
+import { IsEmail, IsNotEmpty, IsString, MaxLength } from 'class-validator'
 
 export class UserRoles {
+  @IsString()
+  @MaxLength(255)
+  @IsNotEmpty()
   name: string
+
+  @IsNotEmpty()
+  @IsEmail()
   email: string
+
+  @IsNotEmpty()
   password: string
 
   constructor(props: UserProps) {
@@ -12,7 +21,7 @@ export class UserRoles {
 }
 
 export class UserValidator extends ClassValidatorFields<UserProps> {
-  validate(data: UserProps): boolean {
+  userValidate(data: UserProps): boolean {
     return this.validate(new UserRoles({ ...data }))
   }
 }
